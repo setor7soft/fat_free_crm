@@ -70,14 +70,18 @@ group :heroku do
   gem 'rails_12factor'
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier',     '>= 1.0.3'
-  gem 'execjs'
-  gem 'therubyracer', :platform => :ruby unless ENV["CI"]
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'execjs'
+gem 'therubyracer', :platform => :ruby unless ENV["CI"]
+gem 'rails3-jquery-autocomplete', github: 'crowdint/rails3-jquery-autocomplete'
+gem 'prototype-rails', github: 'rails/prototype-rails'
 
-gem 'turbo-sprockets-rails3'
+gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
+
+# this is because we're not using Strong Parameters right now.
+gem "protected_attributes"
+
+# this is because observers are deprecated
+gem "rails-observers"
