@@ -284,7 +284,7 @@ describe TasksController do
 
           request.env["HTTP_REFERER"] = "http://localhost/tasks#{view}"
           xhr :post, :create, :task => { :name => "Hello world" }
-          assigns[:task_total].should be_an_instance_of(HashWithIndifferentAccess)
+          assigns[:task_total].should be_an_instance_of(ActiveSupport::HashWithIndifferentAccess)
         end
       end
     end
@@ -327,7 +327,7 @@ describe TasksController do
 
           request.env["HTTP_REFERER"] = "http://localhost/tasks#{view}"
           xhr :put, :update, :id => @task.id, :task => { :name => "Hello" }
-          assigns[:task_total].should be_an_instance_of(HashWithIndifferentAccess)
+          assigns[:task_total].should be_an_instance_of(ActiveSupport::HashWithIndifferentAccess)
         end
       end
     end
@@ -386,7 +386,7 @@ describe TasksController do
 
         request.env["HTTP_REFERER"] = "http://localhost/tasks#{view}"
         xhr :delete, :destroy, :id => @task.id, :bucket => "due_asap"
-        assigns[:task_total].should be_an_instance_of(HashWithIndifferentAccess)
+        assigns[:task_total].should be_an_instance_of(ActiveSupport::HashWithIndifferentAccess)
       end
     end
 
@@ -446,7 +446,7 @@ describe TasksController do
       @task = FactoryGirl.create(:task, :completed_at => nil, :user => current_user)
 
       xhr :put, :complete, :id => @task.id, :bucket => "due_asap"
-      assigns[:task_total].should be_an_instance_of(HashWithIndifferentAccess)
+      assigns[:task_total].should be_an_instance_of(ActiveSupport::HashWithIndifferentAccess)
     end
 
     describe "task got deleted or reassigned" do

@@ -363,7 +363,7 @@ describe OpportunitiesController do
       it "should get sidebar data if called from opportunities index" do
         request.env["HTTP_REFERER"] = "http://localhost/opportunities"
         xhr :post, :create, :opportunity => { :name => "Hello" }, :account => { :name => "Hello again" }
-        assigns(:opportunity_stage_total).should be_an_instance_of(HashWithIndifferentAccess)
+        assigns(:opportunity_stage_total).should be_an_instance_of(ActiveSupport::HashWithIndifferentAccess)
       end
 
       it "should find related account if called from account landing page" do
@@ -522,7 +522,7 @@ describe OpportunitiesController do
 
         request.env["HTTP_REFERER"] = "http://localhost/opportunities"
         xhr :put, :update, :id => 42, :opportunity => { :name => "Hello world" }, :account => { :name => "Test Account" }
-        assigns(:opportunity_stage_total).should be_an_instance_of(HashWithIndifferentAccess)
+        assigns(:opportunity_stage_total).should be_an_instance_of(ActiveSupport::HashWithIndifferentAccess)
       end
 
       it "should find related account if called from account landing page" do
@@ -715,7 +715,7 @@ describe OpportunitiesController do
 
         it "should get sidebar data if called from opportunities index" do
           xhr :delete, :destroy, :id => @opportunity.id
-          assigns(:opportunity_stage_total).should be_an_instance_of(HashWithIndifferentAccess)
+          assigns(:opportunity_stage_total).should be_an_instance_of(ActiveSupport::HashWithIndifferentAccess)
         end
 
         it "should try previous page and render index action if current page has no opportunities" do

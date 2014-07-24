@@ -357,7 +357,7 @@ describe LeadsController do
 
         request.env["HTTP_REFERER"] = "http://localhost/leads"
         xhr :post, :create, :lead => { :first_name => "Billy", :last_name => "Bones" }
-        assigns[:lead_status_total].should be_an_instance_of(HashWithIndifferentAccess)
+        assigns[:lead_status_total].should be_an_instance_of(ActiveSupport::HashWithIndifferentAccess)
       end
 
       it "should reload leads to update pagination if called from leads index" do
@@ -489,7 +489,7 @@ describe LeadsController do
         request.env["HTTP_REFERER"] = "http://localhost/leads"
         xhr :put, :update, :id => @lead.id, :lead => { :first_name => "Billy" }
         assigns[:lead_status_total].should_not be_nil
-        assigns[:lead_status_total].should be_an_instance_of(HashWithIndifferentAccess)
+        assigns[:lead_status_total].should be_an_instance_of(ActiveSupport::HashWithIndifferentAccess)
       end
 
       it "should reload lead campaign if called from campaign landing page" do
@@ -566,7 +566,7 @@ describe LeadsController do
           xhr :delete, :destroy, :id => @lead.id
           assigns[:leads].should == [ @another_lead ] # @lead got deleted
           assigns[:lead_status_total].should_not be_nil
-          assigns[:lead_status_total].should be_an_instance_of(HashWithIndifferentAccess)
+          assigns[:lead_status_total].should be_an_instance_of(ActiveSupport::HashWithIndifferentAccess)
           response.should render_template("leads/destroy")
         end
 
@@ -793,7 +793,7 @@ describe LeadsController do
 
       xhr :put, :promote, :id => @lead.id, :account => { :name => "Hello" }, :opportunity => {}
       assigns[:lead_status_total].should_not be_nil
-      assigns[:lead_status_total].should be_an_instance_of(HashWithIndifferentAccess)
+      assigns[:lead_status_total].should be_an_instance_of(ActiveSupport::HashWithIndifferentAccess)
     end
 
     it "should reload lead campaign if called from campaign landing page" do
@@ -858,7 +858,7 @@ describe LeadsController do
         request.env["HTTP_REFERER"] = "http://localhost/leads"
         xhr :put, :reject, :id => @lead.id
         assigns[:lead_status_total].should_not be_nil
-        assigns[:lead_status_total].should be_an_instance_of(HashWithIndifferentAccess)
+        assigns[:lead_status_total].should be_an_instance_of(ActiveSupport::HashWithIndifferentAccess)
       end
 
       it "should reload lead campaign if called from campaign landing page" do

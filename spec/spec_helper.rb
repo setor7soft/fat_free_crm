@@ -46,6 +46,9 @@ RSpec.configure do |config|
     # In order to ensure that test still pass if "Setting.locale" is not set to "en-US".
     I18n.locale = 'en-US'
     Setting.locale = 'en-US' unless Setting.locale == 'en-US'
+    full_example_description = "#{self.class.description} #{@method_name}"
+    Rails::logger.debug("\n\n#{full_example_description}\n#{'-' * (full_example_description.length)}")
+
   end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
@@ -105,13 +108,13 @@ end
 
 ActionView::TestCase::TestController.class_eval do
   def controller_name
-    HashWithIndifferentAccess.new(request.path_parameters)["controller"].split('/').last
+    ActiveSupport::HashWithIndifferentAccess.new(request.path_parameters)["controller"].split('/').last
   end
 end
 
 ActionView::Base.class_eval do
   def controller_name
-    HashWithIndifferentAccess.new(request.path_parameters)["controller"].split('/').last
+    ActiveSupport::HashWithIndifferentAccess.new(request.path_parameters)["controller"].split('/').last
   end
 
   def called_from_index_page?(controller = controller_name)

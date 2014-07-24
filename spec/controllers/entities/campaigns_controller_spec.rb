@@ -318,7 +318,7 @@ describe CampaignsController do
         Campaign.stub(:new).and_return(@campaign)
 
         xhr :post, :create, :campaign => { :name => "Hello" }
-        assigns[:campaign_status_total].should be_instance_of(HashWithIndifferentAccess)
+        assigns[:campaign_status_total].should be_instance_of(ActiveSupport::HashWithIndifferentAccess)
       end
 
       it "should reload campaigns to update pagination" do
@@ -373,7 +373,7 @@ describe CampaignsController do
 
         xhr :put, :update, :id => 42, :campaign => { :name => "Hello" }
         assigns(:campaign).should == @campaign
-        assigns[:campaign_status_total].should be_instance_of(HashWithIndifferentAccess)
+        assigns[:campaign_status_total].should be_instance_of(ActiveSupport::HashWithIndifferentAccess)
       end
 
       it "should update campaign permissions when sharing with specific users" do
@@ -440,7 +440,7 @@ describe CampaignsController do
       it "should get data for campaigns sidebar" do
         xhr :delete, :destroy, :id => @campaign.id
 
-        assigns[:campaign_status_total].should be_instance_of(HashWithIndifferentAccess)
+        assigns[:campaign_status_total].should be_instance_of(ActiveSupport::HashWithIndifferentAccess)
       end
 
       it "should try previous page and render index action if current page has no campaigns" do
