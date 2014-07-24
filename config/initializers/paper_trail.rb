@@ -3,8 +3,9 @@
 # Fat Free CRM is freely distributable under the terms of MIT license.
 # See MIT-LICENSE file or http://www.opensource.org/licenses/mit-license.php
 #------------------------------------------------------------------------------
-require 'paper_trail'
+PaperTrail::Rails::Engine.eager_load!
 
+module PaperTrail
   class Version < ActiveRecord::Base
     ASSETS = %w(all tasks campaigns leads accounts contacts opportunities comments emails)
     EVENTS = %w(all_events create view update destroy)
@@ -43,7 +44,7 @@ require 'paper_trail'
       end
 
       def latest(options = {})
-        includes(:item, :related, :user).
+        includes(:related, :user).
         where(({:item_type => options[:asset]} if options[:asset])).
         where(({:event     => options[:event]} if options[:event])).
         where(({:whodunnit => options[:user].to_s}  if options[:user])).
@@ -62,8 +63,8 @@ require 'paper_trail'
       end
 
       def visible_to(user)
-        scoped.delete_if do |version|
-          if item = version.item || version.reify
+        where(nil).delete_if do |version|
+          if item = version || version.reify
             if item.respond_to?(:access) # NOTE: Tasks don't have :access as of yet.
               # Delete from scope if it shouldn't be visible
               next item.user_id != user.id &&
@@ -83,3 +84,4 @@ require 'paper_trail'
 
     end
   end
+end

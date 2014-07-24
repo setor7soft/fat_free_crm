@@ -15,7 +15,7 @@ namespace :ffcrm do
       end
 
       def create_version(options)
-        version = Version.new
+        version = PaperTrail::Version.new
         options.each { |k,v| version.send(k.to_s + '=', v) }
         version.save!
       end

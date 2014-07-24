@@ -20,7 +20,7 @@
 
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
-describe Version, :versioning => true do
+describe PaperTrail::Version, :versioning => true do
 
   before do
     login
@@ -42,29 +42,29 @@ describe Version, :versioning => true do
     end
 
     it "should not include view events" do
-      @versions = Version.for(current_user).exclude_events(:view)
+      @versions = PaperTrail::Version.for(current_user).exclude_events(:view)
       @versions.map(&:event).sort.should_not include('view')
     end
 
     it "should exclude create, update and destroy events" do
-      @versions = Version.for(current_user).exclude_events(:create, :update, :destroy)
+      @versions = PaperTrail::Version.for(current_user).exclude_events(:create, :update, :destroy)
       @versions.map(&:event).should_not include('create')
       @versions.map(&:event).should_not include('update')
       @versions.map(&:event).should_not include('destroy')
     end
 
     it "should include only destroy events" do
-      @versions = Version.for(current_user).include_events(:destroy)
+      @versions = PaperTrail::Version.for(current_user).include_events(:destroy)
       @versions.map(&:event).uniq.should == %w(destroy)
     end
 
     it "should include create and update events" do
-      @versions = Version.for(current_user).include_events(:create, :update)
+      @versions = PaperTrail::Version.for(current_user).include_events(:create, :update)
       @versions.map(&:event).uniq.sort.should == %w(create update)
     end
 
     it "should select all versions for a given user" do
-      @versions = Version.for(current_user)
+      @versions = PaperTrail::Version.for(current_user)
       @versions.map(&:whodunnit).uniq.should == [current_user.id.to_s]
     end
   end
@@ -77,7 +77,7 @@ describe Version, :versioning => true do
       end
 
       it "should add a version when creating new #{item}" do
-        @version = Version.where(@conditions.merge(:event => 'create')).first
+        @version = PaperTrail::Version.where(@conditions.merge(:event => 'create')).first
         @version.should_not == nil
       end
 
@@ -87,14 +87,14 @@ describe Version, :versioning => true do
         else
           @item.update_attributes(:name => "Billy Bones")
         end
-        @version = Version.where(@conditions.merge(:event => 'update')).first
+        @version = PaperTrail::Version.where(@conditions.merge(:event => 'update')).first
 
         @version.should_not == nil
       end
 
       it "should add a version when deleting #{item}" do
         @item.destroy
-        @version = Version.where(@conditions.merge(:event => 'destroy')).first
+        @version = PaperTrail::Version.where(@conditions.merge(:event => 'destroy')).first
 
         @version.should_not == nil
       end
@@ -102,7 +102,7 @@ describe Version, :versioning => true do
       it "should add a version when commenting on a #{item}" do
         @comment = FactoryGirl.create(:comment, :commentable => @item, :user => current_user)
 
-        @version = Version.where({:related_id => @item.id, :related_type => @item.class.name, :whodunnit => PaperTrail.whodunnit, :event => 'create'}).first
+        @version = PaperTrail::Version.where({:related_id => @item.id, :related_type => @item.class.name, :whodunnit => PaperTrail.whodunnit, :event => 'create'}).first
         @version.should_not == nil
       end
     end
@@ -115,14 +115,14 @@ describe Version, :versioning => true do
     end
 
     it "creating a new task should not add it to recently viewed items list" do
-      @versions = Version.where(@conditions)
+      @versions = PaperTrail::Version.where(@conditions)
 
       @versions.map(&:event).should include('create') # but not view
     end
 
     it "updating a new task should not add it to recently viewed items list" do
       @task.update_attribute(:updated_at, 1.second.ago)
-      @versions = Version.where(@conditions)
+      @versions = PaperTrail::Version.where(@conditions)
 
       @versions.map(&:event).sort.should == %w(create update) # but not view
     end
@@ -136,21 +136,21 @@ describe Version, :versioning => true do
 
     it "should create 'completed' task event" do
       @task.update_attribute(:completed_at, 1.second.ago)
-      @versions = Version.where(@conditions)
+      @versions = PaperTrail::Version.where(@conditions)
 
       @versions.map(&:event).should include('complete')
     end
 
     it "should create 'reassigned' task event" do
       @task.update_attribute(:assigned_to, current_user.id + 1)
-      @versions = Version.where(@conditions)
+      @versions = PaperTrail::Version.where(@conditions)
 
       @versions.map(&:event).should include('reassign')
     end
 
     it "should create 'rescheduled' task event" do
       @task.update_attribute(:bucket, "due_tomorrow") # FactoryGirl creates :due_asap task
-      @versions = Version.where(@conditions)
+      @versions = PaperTrail::Version.where(@conditions)
 
       @versions.map(&:event).should include('reschedule')
     end
@@ -164,7 +164,7 @@ describe Version, :versioning => true do
 
     it "should create 'rejected' lead event" do
       @lead.update_attribute(:status, "rejected")
-      @versions = Version.where(@conditions)
+      @versions = PaperTrail::Version.where(@conditions)
 
       @versions.map(&:event).should include('reject')
     end
@@ -173,16 +173,16 @@ describe Version, :versioning => true do
   describe "Permissions" do
     before do
       @user = FactoryGirl.create(:user)
-      Version.delete_all
+      PaperTrail::Version.delete_all
     end
 
     it "should not show the create/update versions if the item is private" do
       @item = FactoryGirl.create(:account, :user => current_user, :access => "Private")
       @item.update_attribute(:updated_at,  1.second.ago)
 
-      @versions = Version.where({:item_id => @item.id, :item_type => @item.class.name})
+      @versions = PaperTrail::Version.where({:item_id => @item.id, :item_type => @item.class.name})
       @versions.map(&:event).sort.should == %w(create update)
-      @versions = Version.latest.visible_to(@user)
+      @versions = PaperTrail::Version.latest.visible_to(@user)
       @versions.should == []
     end
 
@@ -190,9 +190,9 @@ describe Version, :versioning => true do
       @item = FactoryGirl.create(:account, :user => current_user, :access => "Private")
       @item.destroy
 
-      @versions = Version.where({:item_id => @item.id, :item_type => @item.class.name})
+      @versions = PaperTrail::Version.where({:item_id => @item.id, :item_type => @item.class.name})
       @versions.map(&:event).sort.should == %w(create destroy)
-      @versions = Version.latest.visible_to(@user)
+      @versions = PaperTrail::Version.latest.visible_to(@user)
       @versions.should == []
     end
 
@@ -204,9 +204,9 @@ describe Version, :versioning => true do
       )
       @item.update_attribute(:updated_at, 1.second.ago)
 
-      @versions = Version.where({:item_id => @item.id, :item_type => @item.class.name})
+      @versions = PaperTrail::Version.where({:item_id => @item.id, :item_type => @item.class.name})
       @versions.map(&:event).sort.should == %w(create update)
-      @versions = Version.latest.visible_to(@user)
+      @versions = PaperTrail::Version.latest.visible_to(@user)
       @versions.should == []
     end
 
@@ -218,9 +218,9 @@ describe Version, :versioning => true do
       )
       @item.destroy
 
-      @versions = Version.where({:item_id => @item.id, :item_type => @item.class.name})
+      @versions = PaperTrail::Version.where({:item_id => @item.id, :item_type => @item.class.name})
       @versions.map(&:event).sort.should == %w(create destroy)
-      @versions = Version.latest.visible_to(@user)
+      @versions = PaperTrail::Version.latest.visible_to(@user)
       @versions.should == []
     end
 
@@ -232,9 +232,9 @@ describe Version, :versioning => true do
       )
       @item.update_attribute(:updated_at, 1.second.ago)
 
-      @versions = Version.where({:item_id => @item.id, :item_type => @item.class.name})
+      @versions = PaperTrail::Version.where({:item_id => @item.id, :item_type => @item.class.name})
       @versions.map(&:event).sort.should == %w(create update)
-      @versions = Version.latest.visible_to(@user)
+      @versions = PaperTrail::Version.latest.visible_to(@user)
       @versions.map(&:event).sort.should == %w(create update)
     end
   end

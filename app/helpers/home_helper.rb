@@ -5,21 +5,21 @@
 #------------------------------------------------------------------------------
 module HomeHelper
   def sort_by_assets
-    Version::ASSETS.map do |asset|
+    PaperTrail::Version::ASSETS.map do |asset|
       %Q[{ name: "#{t(asset.singularize)}", on_select: function() { #{redraw(:asset, [ asset, t(asset.singularize).downcase ], url_for(:action => :redraw))} } }]
     end
   end
 
   #----------------------------------------------------------------------------
   def sort_by_events
-    Version::EVENTS.map do |event|
+    PaperTrail::Version::EVENTS.map do |event|
       %Q[{ name: "#{t(event + '_past_participle')}", on_select: function() { #{redraw(:event, [ event, t(event + '_past_participle').downcase ], url_for(:action => :redraw))} } }]
     end
   end
 
   #----------------------------------------------------------------------------
   def sort_by_duration
-    Version::DURATION.map do |duration|
+    PaperTrail::Version::DURATION.map do |duration|
       %Q[{ name: "#{t(duration)}", on_select: function() { #{redraw(:duration, [ duration, t(duration).downcase ], url_for(:action => :redraw))} } }]
     end
   end
