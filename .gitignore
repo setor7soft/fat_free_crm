@@ -33,3 +33,4 @@ Design
 *~
 *.swp
 *.gem
+.vagrant/machines/default/virtualbox/id
