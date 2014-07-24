@@ -1,6 +1,6 @@
-# Fat Free CRM [![TravisCI][travis-img-url]][travis-ci-url]  [![Code Climate](https://codeclimate.com/github/fatfreecrm/fat_free_crm.png)](https://codeclimate.com/github/fatfreecrm/fat_free_crm)
+# Fat Free CRM [![TravisCI][travis-img-url]][travis-ci-url]  [![Code Climate](https://codeclimate.com/github/setor7soft/fat_free_crm.png)](https://codeclimate.com/github/setor7soft/fat_free_crm)
 
-[travis-img-url]: https://secure.travis-ci.org/fatfreecrm/fat_free_crm.png?branch=master
+[travis-img-url]: https://secure.travis-ci.org/setor7soft/fat_free_crm.png?branch=master
 [travis-ci-url]: http://travis-ci.org/fatfreecrm/fat_free_crm
 
 ### An open source, Ruby on Rails [customer relationship management][crm-wiki] platform (CRM).
