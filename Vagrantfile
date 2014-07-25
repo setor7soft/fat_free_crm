@@ -24,4 +24,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #  chef.add_recipe 'main'
   #end
 
+  config.vm.synced_folder ".", "/vagrant", :nfs => true
+  config.vm.provider :virtualbox do |vb|
+    vb.customize [
+      "setextradata", :id,
+      "VBoxInternal/Devices/ahci/0/LUN#[0]/Config/IgnoreFlush", "1"
+    ]
+  end
+
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+  end
+
 end

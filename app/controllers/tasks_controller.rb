@@ -38,7 +38,7 @@ class TasksController < ApplicationController
 
     if params[:related]
       model, id = params[:related].split(/_(\d+)/)
-      if related = model.classify.constantize.my.find_by_id(id)
+      if related = model.classify.to_s.constantize.my.find_by_id(id)
         instance_variable_set("@asset", related)
       else
         respond_to_related_not_found(model) and return

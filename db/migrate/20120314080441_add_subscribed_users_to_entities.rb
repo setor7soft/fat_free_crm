@@ -3,7 +3,7 @@ class AddSubscribedUsersToEntities < ActiveRecord::Migration
     %w(accounts campaigns contacts leads opportunities tasks).each do |table|
       add_column table.to_sym, :subscribed_users, :text
       # Reset the column information of each model
-      table.singularize.capitalize.constantize.reset_column_information
+      table.singularize.capitalize.to_s.constantize.reset_column_information
     end
 
     entity_subscribers = Hash.new(Set.new)

@@ -34,7 +34,7 @@ class FieldGroup < ActiveRecord::Base
   end
 
   def klass
-    klass_name.constantize
+    klass_name.to_s.constantize
   end
 
   def self.with_tags(tag_ids)

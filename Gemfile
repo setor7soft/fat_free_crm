@@ -85,3 +85,8 @@ gem "protected_attributes"
 
 # this is because observers are deprecated
 gem "rails-observers"
+
+gem 'ransack_ui', github: 'welitonfreitas/ransack_ui'
+gem 'ransack',             '~> 1.1.0' # not compatible with 1.2.X yet
+gem "zeus"
+#gem 'ffcrm_merge', :github => 'fatfreecrm/ffcrm_merge'

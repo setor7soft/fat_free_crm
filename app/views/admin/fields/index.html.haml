@@ -17,7 +17,7 @@
 
 - list_of_entities.each do |entity|
   - asset = entity.downcase
-  - klass = asset.classify.constantize
+  - klass = asset.classify.to_s.constantize
   .fields{ :id => "#{asset}_section", :style => ("display: none;" if asset != 'contact') }
 
     - create_form_id = "#{asset}_create_field_group"

@@ -34,7 +34,7 @@ class AccountsController < EntitiesController
 
     if params[:related]
       model, id = params[:related].split('_')
-      instance_variable_set("@#{model}", model.classify.constantize.find(id))
+      instance_variable_set("@#{model}", model.classify.to_s.constantize.find(id))
     end
 
     respond_with(@account)

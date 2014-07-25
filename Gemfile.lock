@@ -1,14 +1,8 @@
 GIT
   remote: git://github.com/activerecord-hackery/ransack.git
-  revision: 7d35f9c3749c4a724cb7bcdf2d9289df1b9d997e
+  revision: d8114f1dd33f3d87499380642522e7868d09c784
   branch: rails-4
   specs:
-    ransack (1.2.3)
-      actionpack (>= 4.0)
-      activerecord (>= 4.0)
-      activesupport (>= 4.0)
-      i18n
-      polyamorous (~> 1.1.0)
 
 GIT
   remote: git://github.com/crowdint/rails3-jquery-autocomplete.git
@@ -23,6 +17,14 @@ GIT
   specs:
     prototype-rails (4.0.0)
       rails (~> 4.0)
+
+GIT
+  remote: git://github.com/welitonfreitas/ransack_ui.git
+  revision: b05fc942118983ee4a9d5c74ffd7160df72a7356
+  specs:
+    ransack_ui (1.2.2)
+      ransack
+      ransack_chronic (>= 1.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -183,7 +185,7 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
-    polyamorous (1.1.0)
+    polyamorous (0.6.4)
       activerecord (>= 3.0)
     polyglot (0.3.5)
     premailer (1.8.2)
@@ -224,11 +226,12 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.3.2)
+    ransack (1.1.0)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      polyamorous (~> 0.6.0)
     ransack_chronic (1.1.0)
       chronic (>= 0.6.7)
-    ransack_ui (1.2.2)
-      ransack
-      ransack_chronic (>= 1.1.0)
     rb-fchange (0.0.6)
       ffi
     rb-fsevent (0.9.4)
@@ -370,8 +373,8 @@ DEPENDENCIES
   rails-observers
   rails3-jquery-autocomplete!
   rails_12factor
-  ransack!
-  ransack_ui (>= 1.1.0)
+  ransack (~> 1.1.0)
+  ransack_ui!
   rb-fchange
   rb-fsevent
   rb-inotify

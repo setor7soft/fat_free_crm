@@ -20,7 +20,7 @@ class EntitiesController < ApplicationController
   # Common attach handler for all core controllers.
   #----------------------------------------------------------------------------
   def attach
-    @attachment = params[:assets].classify.constantize.find(params[:asset_id])
+    @attachment = params[:assets].classify.to_s.constantize.find(params[:asset_id])
     @attached = entity.attach!(@attachment)
     entity.reload
 
@@ -30,7 +30,7 @@ class EntitiesController < ApplicationController
   # Common discard handler for all core controllers.
   #----------------------------------------------------------------------------
   def discard
-    @attachment = params[:attachment].constantize.find(params[:attachment_id])
+    @attachment = params[:attachment].to_s.constantize.find(params[:attachment_id])
     entity.discard!(@attachment)
     entity.reload
 
@@ -114,7 +114,7 @@ protected
 
   def set_options
     unless params[:cancel].true?
-      klass = controller_name.classify.constantize
+      klass = controller_name.classify.to_s.constantize
       @per_page = current_user.pref[:"#{controller_name}_per_page"] || klass.per_page
       @sort_by  = current_user.pref[:"#{controller_name}_sort_by"]  || klass.sort_by
     end

@@ -58,7 +58,7 @@ private
     return [] if related.blank?
     return [related.to_i].compact unless related.index('/')
     related_class, id = related.split('/')
-    obj = related_class.classify.constantize.find_by_id(id)
+    obj = related_class.classify.to_s.constantize.find_by_id(id)
     if obj and obj.respond_to?(controller_name)
       obj.send(controller_name).map(&:id)
     else
@@ -68,7 +68,7 @@ private
 
   #----------------------------------------------------------------------------
   def klass
-    @klass ||= controller_name.classify.constantize
+    @klass ||= controller_name.classify.to_s.constantize
   end
 
   #----------------------------------------------------------------------------

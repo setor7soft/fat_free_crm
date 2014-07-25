@@ -24,7 +24,7 @@ namespace :ffcrm do
       $stdout.sync = true
       puts "Generating user activities..."
       %w(Account Address Campaign Comment Contact Email Lead Opportunity Task).map do |model|
-        model.constantize.all
+        model.to_s.constantize.all
       end.flatten.each do |item|
         user = if item.respond_to?(:user)
           item.user

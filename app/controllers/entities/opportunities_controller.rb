@@ -37,7 +37,7 @@ class OpportunitiesController < EntitiesController
 
     if params[:related]
       model, id = params[:related].split('_')
-      if related = model.classify.constantize.my.find_by_id(id)
+      if related = model.classify.to_s.constantize.my.find_by_id(id)
         instance_variable_set("@#{model}", related)
         @account = related.account if related.respond_to?(:account) && !related.account.nil?
         @campaign = related.campaign if related.respond_to?(:campaign)

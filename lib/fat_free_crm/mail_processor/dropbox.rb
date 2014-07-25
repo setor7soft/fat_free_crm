@@ -90,7 +90,7 @@ module FatFreeCRM
       # Process pipe_separated_data or explicit keyword.
       #--------------------------------------------------------------------------------------
       def find_or_create_and_attach(email, data)
-        klass = data["Type"].constantize
+        klass = data["Type"].to_s.constantize
 
         if data["Email"] && klass.new.respond_to?(:email)
           conditions = [

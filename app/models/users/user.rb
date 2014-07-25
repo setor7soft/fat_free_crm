@@ -163,7 +163,7 @@ class User < ActiveRecord::Base
   #----------------------------------------------------------------------------
   def check_if_has_related_assets
     artifacts = %w(Account Campaign Lead Contact Opportunity Comment Task).inject(0) do |sum, asset|
-      klass = asset.constantize
+      klass = asset.to_s.constantize
       sum += klass.assigned_to(self).count if asset != "Comment"
       sum += klass.created_by(self).count
     end

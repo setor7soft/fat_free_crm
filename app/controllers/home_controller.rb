@@ -60,7 +60,7 @@ class HomeController < ApplicationController
     if %w(Collapsed Expanded).include?(state)
       if (model_type = params[:type].to_s).present?
         if %w(comment email).include?(model_type)
-          model = model_type.camelize.constantize
+          model = model_type.camelize.to_s.constantize
           item = model.find(params[:id])
           item.update_attribute(:state, state)
         end

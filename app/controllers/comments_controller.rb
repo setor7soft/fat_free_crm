@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
   def index
     @commentable = extract_commentable_name(params)
     if @commentable
-      @asset = @commentable.classify.constantize.my.find(params[:"#{@commentable}_id"])
+      @asset = @commentable.classify.to_s.constantize.my.find(params[:"#{@commentable}_id"])
       @comments = @asset.comments.order("created_at DESC")
     end
     respond_with(@comments) do |format|
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
 
     model, id = @comment.commentable_type, @comment.commentable_id
-    unless model.constantize.my.find_by_id(id)
+    unless model.to_s.constantize.my.find_by_id(id)
       respond_to_related_not_found(model.downcase)
     end
   end
@@ -51,7 +51,7 @@ class CommentsController < ApplicationController
 
     # Make sure commentable object exists and is accessible to the current user.
     model, id = @comment.commentable_type, @comment.commentable_id
-    unless model.constantize.my.find_by_id(id)
+    unless model.to_s.constantize.my.find_by_id(id)
       respond_to_related_not_found(model.downcase)
     else
       @comment.save

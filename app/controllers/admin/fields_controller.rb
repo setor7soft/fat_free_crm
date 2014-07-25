@@ -45,7 +45,7 @@ class Admin::FieldsController < Admin::ApplicationController
       if as =~ /pair/
         CustomFieldPair.create_pair(params).first
       elsif as.present?
-        klass = Field.lookup_class(as).classify.constantize
+        klass = Field.lookup_class(as).classify.to_s.constantize
         klass.create(params[:field])
       else
         Field.new(params[:field]).tap(&:valid?)
@@ -102,7 +102,7 @@ class Admin::FieldsController < Admin::ApplicationController
         Field.find(id).tap{|f| f.as = as}
       else
         field_group_id = field[:field_group_id]
-        klass = Field.lookup_class(as).classify.constantize
+        klass = Field.lookup_class(as).classify.to_s.constantize
         klass.new(:field_group_id => field_group_id, :as => as)
       end
 
