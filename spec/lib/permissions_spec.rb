@@ -32,7 +32,7 @@ describe FatFreeCRM::Permissions do
     it "should assign permissions to the object" do
       @entity.permissions.size.should == 0
       @entity.update_attribute(:user_ids, ['1','2','3'])
-      @entity.permissions.find_all_by_user_id([1,2,3]).size.should == 3
+      @entity.permissions.where(["user_id = ?",user_id([1,2,3])]).size.should == 3
     end
 
     it "should handle [] permissions" do
@@ -45,9 +45,9 @@ describe FatFreeCRM::Permissions do
       @entity.permissions << FactoryGirl.create(:permission, :user_id => 2, :asset => @entity)
       @entity.update_attribute(:user_ids, ['2','3'])
       @entity.permissions.size.should == 2
-      @entity.permissions.find_all_by_user_id([1]).size.should == 0
-      @entity.permissions.find_all_by_user_id([2]).size.should == 1
-      @entity.permissions.find_all_by_user_id([3]).size.should == 1
+      @entity.permissions.where(["user_id = ?",user_id([1])]).size.should == 0
+      @entity.permissions.where(["user_id = ?",user_id([2])]).size.should == 1
+      @entity.permissions.where(["user_id = ?",user_id([3])]).size.should == 1
     end
 
   end

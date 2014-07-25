@@ -72,7 +72,7 @@ describe FatFreeCRM::MailProcessor::Dropbox do
       @crawler.should_not_receive(:with_recipients)
       @crawler.run
 
-      @campaign = Campaign.first(:conditions => "name = 'Got milk'")
+      @campaign = Campaign.where("name = 'Got milk'").first
       @campaign.should be_instance_of(Campaign)
       @campaign.emails.size.should == 1
       @campaign.emails.first.mediator.should == @campaign
@@ -95,7 +95,7 @@ describe FatFreeCRM::MailProcessor::Dropbox do
       @crawler.should_not_receive(:with_recipients)
       @crawler.run
 
-      @lead = Lead.first(:conditions => "first_name = 'Cindy' AND last_name = 'Cluster'")
+      @lead = Lead.where("first_name = 'Cindy' AND last_name = 'Cluster'").first
       @lead.should be_instance_of(Lead)
       @lead.status.should == "contacted"
       @lead.emails.size.should == 1
@@ -119,7 +119,7 @@ describe FatFreeCRM::MailProcessor::Dropbox do
       @crawler.should_not_receive(:with_recipients)
       @crawler.run
 
-      @contact = Contact.first(:conditions => "first_name = 'Cindy' AND last_name = 'Cluster'")
+      @contact = Contact.where("first_name = 'Cindy' AND last_name = 'Cluster'").first
       @contact.should be_instance_of(Contact)
       @contact.emails.size.should == 1
       @contact.emails.first.mediator.should == @contact
@@ -305,4 +305,3 @@ describe FatFreeCRM::MailProcessor::Dropbox do
     end
   end
 end
-

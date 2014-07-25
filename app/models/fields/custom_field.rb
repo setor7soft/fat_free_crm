@@ -125,7 +125,7 @@ class CustomField < Field
   #------------------------------------------------------------------------------
   def add_column
     self.name = generate_column_name if name.blank?
-    connection.add_column(table_name, name, column_type, column_options)
+    class_object.connection.add_column(table_name, name, column_type, column_options)
     klass.reset_column_information
     klass.serialize_custom_fields!
   end
@@ -144,10 +144,14 @@ class CustomField < Field
   #------------------------------------------------------------------------------
   def update_column
     if self.errors.empty? && db_transition_safety(as_was) == :safe
-      connection.change_column(table_name, name, column_type, column_options)
+      class_object.connection.change_column(table_name, name, column_type, column_options)
       klass.reset_column_information
       klass.serialize_custom_fields!
     end
+  end
+
+  def class_object
+    self.is_a?(Class) && self || self.class
   end
 
   ActiveSupport.run_load_hooks(:fat_free_crm_custom_field, self)
