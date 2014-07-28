@@ -7,7 +7,7 @@ PaperTrail::Rails::Engine.eager_load!
 
 module PaperTrail
   class Version < ActiveRecord::Base
-    ASSETS = %w(all tasks campaigns leads accounts contacts opportunities comments emails)
+    ASSETS = %w(all tasks campaigns leads accounts contacts products opportunities comments emails)
     EVENTS = %w(all_events create view update destroy)
     DURATION = %w(one_hour one_day two_days one_week two_weeks one_month)
 

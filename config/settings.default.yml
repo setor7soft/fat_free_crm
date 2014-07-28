@@ -42,6 +42,9 @@
 :host: ""
 
 
+:crm_name: "Fat Free CRM"
+
+
 # Base URL
 #------------------------------------------------------------------------------
 # Leave base_url blank if Fat Free CRM has been deployed in root URL, otherwise
