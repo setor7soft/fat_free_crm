@@ -4,7 +4,7 @@ module ActionView
     module FormOptionsHelper
       # Return select and option tags for the given object and method, using country_options_for_select to generate the list of option tags.
       def country_select(object, method, priority_countries = nil, options = {}, html_options = {})
-        InstanceTag.new(object, method, self, options.delete(:object)).to_country_select_tag(priority_countries, options, html_options)
+        ActionView::Helpers::Tags::TextArea.new(object, method, self, options).to_country_select_tag(priority_countries, options, html_options)
       end
       # Returns a string of option tags for pretty much any country in the world. Supply a country name as +selected+ to
       # have it marked as the selected option tag. You can also supply an array of countries as +priority_countries+, so
@@ -18,7 +18,7 @@ module ActionView
           priority_countries = ["United States", "Argentina", "Australia", "Brasil", "Canada", "Finland", "France", "Germany", "Italy", "Japan", "Mexico", "Norway", "Poland", "Portugal", "Spain", "Sweden", "Russia", "United Kingdom"]
         end
 
-        # Add iso code for priority countries 
+        # Add iso code for priority countries
         priority_countries_iso = COUNTRIES.select{|c| priority_countries.include?(c[0]) }
 
         # Add iso code for selected countries if not nil
@@ -547,7 +547,7 @@ module ActionView
       return COUNTRIES_HASH[code.to_sym] || code
     end
 
-    class InstanceTag
+    class ActionView::Helpers::Tags::TextArea
       def to_country_select_tag(priority_countries, options, html_options)
         html_options = html_options.stringify_keys
         add_default_name_and_id(html_options)

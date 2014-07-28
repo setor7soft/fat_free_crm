@@ -90,3 +90,11 @@ gem 'ransack_ui', github: 'welitonfreitas/ransack_ui'
 gem 'ransack',             '~> 1.1.0' # not compatible with 1.2.X yet
 gem "zeus"
 #gem 'ffcrm_merge', :github => 'fatfreecrm/ffcrm_merge'
+gem 'crm_products', :path => '~/setor7crm/crm_products/'
+gem 'acts_as_paranoid', :github => "byroot/rails3_acts_as_paranoid",  :branch => "rails4.0"
+
+group :development do
+  gem "better_errors"
+  gem 'meta_request'
+  gem 'binding_of_caller'
+end

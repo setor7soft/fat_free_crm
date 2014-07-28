@@ -5,6 +5,14 @@ GIT
   specs:
 
 GIT
+  remote: git://github.com/byroot/rails3_acts_as_paranoid.git
+  revision: 986613064de3a9cd024dd976181f7e509ff1cbac
+  branch: rails4.0
+  specs:
+    acts_as_paranoid (0.4.1)
+      activerecord (~> 4.0)
+
+GIT
   remote: git://github.com/crowdint/rails3-jquery-autocomplete.git
   revision: ab74bd73297922fd7755690ecdd9367c0e93662a
   specs:
@@ -25,6 +33,11 @@ GIT
     ransack_ui (1.2.2)
       ransack
       ransack_chronic (>= 1.1.0)
+
+PATH
+  remote: ~/setor7crm/crm_products/
+  specs:
+    crm_products (1.3.1)
 
 GEM
   remote: https://rubygems.org/
@@ -67,7 +80,13 @@ GEM
       activesupport (>= 3.2)
       request_store (~> 1.0)
     bcrypt (3.1.7)
+    better_errors (1.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.1.4)
+    callsite (0.0.11)
     cancan (1.6.10)
     capistrano (2.15.5)
       highline
@@ -109,6 +128,7 @@ GEM
       addressable
     daemons (1.1.9)
     database_cleaner (1.3.0)
+    debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     docile (1.1.5)
     dynamic_form (1.1.4)
@@ -161,6 +181,10 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta_request (0.3.3)
+      callsite (~> 0.0, >= 0.0.11)
+      rack-contrib (~> 1.1)
+      railties (>= 3.0.0, < 5.0.0)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.0)
@@ -202,6 +226,8 @@ GEM
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.5)
@@ -263,7 +289,7 @@ GEM
       rspec-expectations (~> 2.99.0)
       rspec-mocks (~> 2.99.0)
     rubyzip (1.1.6)
-    sass (3.3.10)
+    sass (3.3.11)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
@@ -338,8 +364,11 @@ DEPENDENCIES
   acts_as_commentable (~> 3.0.1)
   acts_as_fu
   acts_as_list (~> 0.1.4)
+  acts_as_paranoid!
   authlogic
   bcrypt (~> 3.1.7)
+  better_errors
+  binding_of_caller
   cancan
   capistrano (~> 2)
   capistrano_colors
@@ -347,6 +376,7 @@ DEPENDENCIES
   cocaine
   coffee-rails
   coveralls
+  crm_products!
   database_cleaner
   dynamic_form
   email_reply_parser_ffcrm
@@ -360,6 +390,7 @@ DEPENDENCIES
   haml
   headless
   jquery-rails (~> 2.1.4)
+  meta_request
   nokogiri
   paper_trail (~> 3.0.3)
   paperclip

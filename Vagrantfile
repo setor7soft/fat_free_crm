@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = "https://www.dropbox.com/s/07m0zlve0d5jzi1/precise32.box?dl=1"
   config.vm.host_name = 'setor7devbox'
 
-  #config.vm.network :private_network, ip: '192.168.33.10'
+  config.vm.network :private_network, ip: '192.168.33.10'
 
   #config.vm.network :forwarded_port, guest: 80, host: 8080
   config.vm.network :forwarded_port, guest: 1080, host: 1080
@@ -24,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #  chef.add_recipe 'main'
   #end
 
-  config.vm.synced_folder ".", "/vagrant", :nfs => true
+  #config.vm.synced_folder ".", "/vagrant", :nfs => true
   config.vm.provider :virtualbox do |vb|
     vb.customize [
       "setextradata", :id,

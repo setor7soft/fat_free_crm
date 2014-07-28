@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/home/options',  :as => :options
   get '/home/toggle',   :as => :toggle
   patch '/home/timeline', :as => :timeline
-  post '/home/timezone', :as => :timezone
+  get '/home/timezone', :as => :timezone
   post '/home/redraw',   :as => :redraw
 
   resource  :authentication, :except => [:index, :edit]
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
       get :versions
     end
     member do
-      patch  :attach
+      put  :attach
       post :discard
       post :subscribe
       post :unsubscribe
@@ -57,7 +57,7 @@ Rails.application.routes.draw do
       get  :versions
     end
     member do
-      patch  :attach
+      put  :attach
       post :discard
       post :subscribe
       post :unsubscribe
@@ -77,7 +77,7 @@ Rails.application.routes.draw do
       get  :versions
     end
     member do
-      patch  :attach
+      put  :attach
       post :discard
       post :subscribe
       post :unsubscribe
@@ -101,7 +101,7 @@ Rails.application.routes.draw do
       post :discard
       post :subscribe
       post :unsubscribe
-      patch  :attach
+      put  :attach
       patch  :promote
       patch  :reject
     end
@@ -118,7 +118,7 @@ Rails.application.routes.draw do
       get  :versions
     end
     member do
-      patch  :attach
+      put  :attach
       post :discard
       post :subscribe
       post :unsubscribe
