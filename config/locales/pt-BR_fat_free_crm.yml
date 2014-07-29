@@ -16,7 +16,7 @@ pt-BR:
   tab_leads: Leads
   tab_accounts: Contas
   tab_contacts: Contatos
-  tab_opportunities: Oportunidades
+  tab_opportunities: Ocorrências
   admin_tab_users: Usuários
   admin_tab_settings: Configurações
   admin_tab_plugins: Plugins
@@ -118,10 +118,10 @@ pt-BR:
         opportunity:
           attributes:
             name:
-              missing_opportunity_name: ^Por favor, informe um nome para a oportunidade.
+              missing_opportunity_name: ^Por favor, informe um nome para a Ocorrência.
             access:
               share_opportunity: ^Por favor, informe usuários com quem desejas compartilhar
-                esta oportunidade.
+                esta Ocorrência.
         task:
           attributes:
             name:
@@ -345,7 +345,7 @@ pt-BR:
     with the existing or newly created account. Lead status will be automatically
     set to converted.
   create_lead: Novo lead
-  create_opp_for_contact: Você pode opcionalmente criar uma oportunidade para o contato
+  create_opp_for_contact: Você pode opcionalmente criar uma Ocorrência para o contato
     %{value}  especificando o nome, fase atual, data estimada de fechamento, probabilidade
     de venda, valor do acordo, e o desconto oferecido.
   lead: Lead
@@ -376,7 +376,7 @@ pt-BR:
   closed_ago_on: fechada há %{time_ago} atrás em %{date}
   closes_today: expected to close today!
   closing_date: closing date is %{value}
-  create_opportunity: Cria oportunidade
+  create_opportunity: Criar Ocorrência
   currency: (R$)
   days_late: Late by
   days_left: Dias restante
@@ -386,18 +386,18 @@ pt-BR:
   from: from
   no_closing_date: no expected closing date
   no_discount: sem desconto
-  opportunities: Oportunidades
+  opportunities: Ocorrências
   opportunities_options: Opportunities Options
-  opportunities_small: oportunidades
-  opportunity: Oportunidade
-  opportunity_small: oportunidade
-  opportunity_summary: Oportunidade At a Glance
+  opportunities_small: Ocorrências
+  opportunity: Ocorrência
+  opportunity_small: Ocorrência
+  opportunity_summary: Ocorrência At a Glance
   opportunity_summary_text: ! '%{amount} com desconto de %{discount} e probabilidade
     de %{probability}'
   past_due: past due, was expected to close %{value} ago
   probability: Probabilidade
   probability_number: e probabilidade de %{value}
-  save_opportunity: Salvar oportunidade
+  save_opportunity: Salvar Ocorrência
   stage: Fase
   total_opportunities: Total Opportunities
   weighted_amount: Weighted amount
@@ -456,7 +456,7 @@ pt-BR:
   subject_campaign: campanha
   subject_contact: contato
   subject_lead: lead
-  subject_opportunity: oportunidade
+  subject_opportunity: Ocorrência
   subject_task: tarefa
   add_note: Adicionar nota
   save_note: Salvar nota
@@ -555,8 +555,8 @@ pt-BR:
       one: 1 contato
       other: ! '%{count} contatos'
     opportunity:
-      one: 1 oportunidade
-      other: ! '%{count} oportunidades'
+      one: 1 Ocorrência
+      other: ! '%{count} Ocorrências'
     lead:
       one: 1 lead
       other: ! '%{count} leads'
@@ -580,8 +580,8 @@ pt-BR:
   advanced_search: Busca Avançada
   basic_search: Busca Básica
   search_results_count:
-    one: Busca encontrou %{count} resultado.
-    other: Busca encontrou %{count} resultados.
+    one: a busca encontrou %{count} resultado.
+    other: a busca encontrou %{count} resultados.
 
   search: Pesquisar
 
@@ -602,11 +602,16 @@ pt-BR:
 
   my_tasks: Minhas tarefas
   no_task_records: Você não tem tarefas!.
-  my_opportunities: Minhas Oportunidades
-  no_opportunity_records: Você não tem oportunidades!.
+  my_opportunities: Minhas Ocorrências
+  no_opportunity_records: Você não tem Ocorrências!.
   my_accounts: Minhas Contas
   no_account_records: Você não tem contas!.
   total_accounts: Total de Contas
+
+  select_contact: Selecionar Contato
+  select_lead: Selecionar Lead
+  select_task: Selecionar Tarefa
+  select_opportunity: Selecionar Ocorrência
 
 
   account_categories: Categoria de Contas
@@ -619,7 +624,7 @@ pt-BR:
 
 
 
-  total_opportunities: Total de Oportunidades
+  total_opportunities: Total de Ocorrências
   expected_to_close: Deverá ser concluída em %{time} no %{date}
 
   contacts_index_long: Formato longo
@@ -628,5 +633,49 @@ pt-BR:
 
   tab_team: Equipe
 
-  unassigned_opportunities: Oportunidades não atribuídas
-  no_opportunities_found: Atualmente não há excelentes oportunidades.
+  unassigned_opportunities: Ocorrências não atribuídas
+  no_opportunities_found: Atualmente não há excelentes Ocorrências.
+
+  # Views -> Versions
+  #----------------------------------------------------------------------------
+  versions: Historico
+  version:
+    create: ! '%{item} criado por %{by}'
+    update: ! '%{item} modificado por %{by}'
+    destroy: ! '%{item} deletado por %{by}'
+    set_html: ! '%{attr} salvo por %{to}'
+    unset_html: ! '%{attr} apagado'
+    change_html: ! '%{attr} alterado de %{from} para %{to}'
+    anonymous: anónimos
+  account_contact_id: id da conta
+  account_contact_name: nome da conta
+  user_id: id do usuário
+  created_at: Criado em
+  updated_at: Atualizado em
+
+  select_or_create_tags: Selecione alguma tags ou crie uma nova presionando 'enter'.
+  unassigned: não atribuído
+
+  select_an_account: Selecione uma conta
+  comment: Comentários
+
+
+  # Views -> Opportunities.
+  #----------------------------------------------------------------------------
+  amount: Quantidade
+  close_date: Data de encerramento
+  closes_on: Encerra à
+  closed_ago_on: Encerra %{time_ago} atrás, em %{date}
+  closes_today: deverá ser concluída hoje!
+  closing_date: data de encerramento é %{value}
+  create_opportunity: Criar Ocorrência
+  currency: (R$)
+  days_late: atrasado por
+  days_left: dias restantes
+  discount: Desconto
+  discount_number: com %{value} de desconto
+  expected_to_close: Deverá ser concluida em %{time} no %{date}
+  from: a partir de
+  no_closing_date: Sem data de encerramento
+  no_discount: Sem desconto
+  
