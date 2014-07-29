@@ -264,6 +264,7 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     ref (1.0.5)
+    remotipart (1.2.1)
     request_store (1.0.7)
     responds_to_parent (1.1.0)
     rest-client (1.7.2)
@@ -409,6 +410,7 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify
+  remotipart (~> 1.2)
   responds_to_parent (>= 1.1.0)
   rspec-rails (~> 2)
   sass

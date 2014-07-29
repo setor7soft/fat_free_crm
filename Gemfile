@@ -98,3 +98,5 @@ group :development do
   gem 'meta_request'
   gem 'binding_of_caller'
 end
+
+gem 'remotipart', '~> 1.2'

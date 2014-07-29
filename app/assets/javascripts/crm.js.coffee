@@ -159,6 +159,76 @@
       $("#account_assigned_to").val $("contact_assigned_to").val()
 
 
+# Hide products dropdown and show create new product edit field instead.
+    #----------------------------------------------------------------------------
+    create_product: ->
+      crm.makeAjaxChosen()
+      $("#product_disabled_title").hide()
+      $("#product_select_title").hide()
+      $("#product_create_title").show()
+      $("#product_id_chzn").hide()
+      $("#product_id").prop('disabled', true)
+      $("#product_name").prop('disabled', false)
+      $("#product_name").html ""
+      $("#product_name").show()
+
+
+    # Hide create product edit field and show products dropdown instead.
+    #----------------------------------------------------------------------------
+    select_product: ->
+      crm.makeAjaxChosen()
+      $("#product_disabled_title").hide()
+      $("#product_create_title").hide()
+      $("#product_select_title").show()
+      $("#product_name").hide()
+      $("#product_name").prop('disabled', true)
+      $("#product_id").prop('disabled', false)
+      $("#product_id_chzn").show()
+
+
+    # Show products dropdown and disable it to prevent changing the product.
+    #----------------------------------------------------------------------------
+    select_existing_product: ->
+      crm.makeAjaxChosen()
+      $("#product_create_title").hide()
+      $("#product_select_title").hide()
+      $("#product_id").hide()
+      $("#product_disabled_title").show()
+      $("#product_name").hide()
+      $("#product_name").prop('disabled', true)
+
+      # Disable chosen product select
+      $("#product_id").prop('disabled', true)
+      $("#product_id").trigger "liszt:updated"
+      $("#product_id_chzn").show()
+
+      # Enable hidden product id select so that value is POSTed
+      $("#product_id").prop('disabled', false)
+
+
+    #----------------------------------------------------------------------------
+    create_or_select_product: (selector) ->
+      if selector isnt true and selector > 0
+        @select_existing_product() # disabled products dropdown
+      else if selector
+        @create_product() # create product edit field
+      else
+        @select_product() # products dropdown
+
+
+    #----------------------------------------------------------------------------
+    create_contact: ->
+      @clear_all_hints()  if $("#contact_business_address_attributes_country")
+      $("#product_assigned_to").val $("contact_assigned_to").val()
+      $("#product_id").prop('disabled', false)  if $("#product_id:visible").length
+
+
+    #----------------------------------------------------------------------------
+    save_contact: ->
+      @clear_all_hints()  if $("#contact_business_address_attributes_country")
+      $("#product_assigned_to").val $("contact_assigned_to").val()
+
+
     #----------------------------------------------------------------------------
     flip_calendar: (value) ->
       if value is "specific_time"
@@ -395,12 +465,12 @@
                 $("#auto_complete_query").val ""
             else
               window.location.href = @base_url + "/" + controller + "/" + ui.item.value
-        
+
         focus: (event, ui) =>
           event.preventDefault()
           $("#auto_complete_query").val(ui.item.label)
       )
-      
+
       $.extend $.ui.autocomplete::,
         _renderItem: (ul, item) ->
           term = new RegExp( "(" + @element.val() + ")", "gi" )
