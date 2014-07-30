@@ -45,6 +45,8 @@ pt-BR:
   final_review: Revisão final
   won: Fechado/Conquistado
   lost: Fechado/Perdido
+  active: Ativo
+  deactivated: Desativado
   call: Ligação
   email: Email
   follow_up: Follow-up
@@ -387,18 +389,18 @@ pt-BR:
   no_closing_date: no expected closing date
   no_discount: sem desconto
   opportunities: Ocorrências
-  opportunities_options: Opportunities Options
+  opportunities_options: Opções de ocorrências
   opportunities_small: Ocorrências
   opportunity: Ocorrência
   opportunity_small: Ocorrência
-  opportunity_summary: Ocorrência At a Glance
+  opportunity_summary: Resumo de ocorrências
   opportunity_summary_text: ! '%{amount} com desconto de %{discount} e probabilidade
     de %{probability}'
   past_due: past due, was expected to close %{value} ago
   probability: Probabilidade
   probability_number: e probabilidade de %{value}
   save_opportunity: Salvar Ocorrência
-  stage: Fase
+  stage: Status
   total_opportunities: Total Opportunities
   weighted_amount: Weighted amount
   assign_to: Atribuida para
@@ -678,4 +680,34 @@ pt-BR:
   from: a partir de
   no_closing_date: Sem data de encerramento
   no_discount: Sem desconto
-  
+  update_product: Atualizar Produtos
+  opportunity_stages: Estágios das ocorrências
+  product_stages: Status de Produtos
+  total_products: Total de Produtos
+
+  # crm_products plugin internalization.
+  #----------------------------------------------------------------------------
+  product_title: Produtos
+  product_created_on: Criado em {{value}}
+  create_product: Criar Produto
+  description: Descrição
+  save_product: Salvar
+  select_products: Selecione o(os) produto(s)
+  products: Produtos
+  product: Produto
+  code: Codigo
+  name: Nome
+  manufacturer: Fabricante
+  price: Preço
+  price_3x: Preço 3x
+  price_30_days: Preço 30 dias
+  price_cash: Preço a vista
+  rev_icms18: ICMS 18%
+  rev_icms12: ICMS 12%
+  stock_in: Estoque interno
+  stock_out: Estoque Externo
+  tab_products: Produtos
+
+  product_with_name_price_manufacturer: ! '%{name} - R$ %{price} - %{manufacturer}'
+  product_with_name_price: ! '%{name} - %{price}'
+  product_with_name: ! '%{name}'

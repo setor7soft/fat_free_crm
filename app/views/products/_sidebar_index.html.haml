@@ -1,0 +1,20 @@
+.filters#filters
+  .caption= t :product_stages
+  - @stage.each do |value, key|
+    .check_box{:style => "border-bottom: 1px silver dotted;"}
+      %div{:style => "float:right;"}
+        = @product_stage_total[key]
+      = product_stage_checkbox(key, @product_stage_total[key])
+      = label_tag(key, value)
+
+  .check_box{:style => "border-bottom: 1px silver dotted;"}
+    %div{:style => "float:right;"}
+      = @product_stage_total[:other]
+    = opportunity_stage_checkbox("other", @product_stage_total[:other])
+    = label_tag(:other, t(:other))
+
+  .check_box
+    %div{:style => "float:right;"}
+      %b= @product_stage_total[:all]
+    %b #{t :total_products}
+  = hook(:index_product_sidebar_bottom, self)

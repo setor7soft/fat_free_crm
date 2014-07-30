@@ -196,4 +196,19 @@ Rails.application.routes.draw do
     resources :plugins,  :only => :index
   end
 
+  resources :products do
+    collection do
+      get :search
+      post :auto_complete
+      get  :redraw
+      post :filter
+    end
+    member do
+      get :avatar
+      put :upload
+      get :confirm
+    end
+  end
+
+
 end

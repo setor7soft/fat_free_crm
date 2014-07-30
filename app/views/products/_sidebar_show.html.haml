@@ -1,0 +1,36 @@
+.panel#summary
+  %span{:style => "float:right"}= image_tag @product.avatar.url(:xmedium), {:class => 'gravatar'};
+  %h4= h(@product.name)
+  %div
+    = product_with_code_and_manufacturer(@product)
+
+  - unless @product.description.blank?
+    %div
+    .caption #{t :description}
+    == #{h(@product.description)}<br />
+
+  .caption #{t :stage}
+  - if @product.stage
+    .strip{:class => @product.stage}= t(@product.stage)
+  - else
+    .strip.white #{t :other}
+
+  %br
+  %br
+  .caption #{t :price}
+  %li
+    %dt= @product.price
+    %tt #{t :price}:
+  %li
+    %dt= @product.price_3x
+    %tt #{t :price_3x}:
+  %li
+    %dt= @product.price_30_days
+    %tt #{t :price_30_days}:
+  %li
+    %dt= @product.price_cash
+    %tt #{t :price_cash}:
+
+  //= render "fields/sidebar_show", :asset => @product
+
+  = hook(:show_product_sidebar_bottom, self, :product => @product)

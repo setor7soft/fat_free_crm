@@ -38,4 +38,10 @@
       - if opportunity.tags.any?
         %dt
           .tags= tags_for_dashboard(opportunity)
+
+        %dt
+          .products
+            %b= t(:products) + ": "
+            = products_for_index(model)
+
       = hook(:opportunity_bottom, self, :opportunity => opportunity)

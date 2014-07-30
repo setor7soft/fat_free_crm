@@ -55,5 +55,9 @@
       - if opportunity.tag_list.present?
         %dt
           .tags= tags_for_index(opportunity)
+      %dt
+        .products
+          %b= t(:products) + ": "
+          = products_for_index(opportunity)
 
     = hook(:opportunity_bottom, self, :opportunity => opportunity)

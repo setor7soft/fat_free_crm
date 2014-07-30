@@ -36,6 +36,9 @@ class Campaign < ActiveRecord::Base
   has_many    :leads, -> { order "id DESC" }, :dependent => :destroy
   has_many    :opportunities, -> { order "id DESC" }, :dependent => :destroy
   has_many    :emails, :as => :mediator
+  has_many    :product_assets, :dependent => :destroy, :as => :asset
+  has_many    :products, :through => :product_assets
+
 
   serialize :subscribed_users, Set
 

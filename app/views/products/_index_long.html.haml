@@ -1,0 +1,34 @@
+%li.highlight[product]
+  - if product.stage
+    .strip{:class => product.stage}= t(product.stage)
+  - else
+    .strip.white #{t :other}
+
+  = image_tag product.avatar.url(:thumb), {:class => 'gravatar'};
+
+  %ul.tools
+    = hook(:product_tools_before, self, :product => product)
+
+    - if can?(:update, product)
+      %li= link_to_edit(product)
+
+    - if shown_on_landing_page?
+      %li= link_to_discard(product)
+
+    - if can?(:destroy, product)
+      %li= link_to_delete(product)
+
+  .indentslim
+    = link_to_if can?(:read, product), product.code(), product
+    %tt
+      = brief_product_info(product)
+      %b= product.description
+
+    %dt{ :style => "padding: 2px 0px 0px 0px" }
+    = t(:added_ago, value: timeago(product.created_at)).html_safe
+
+    //- if product.tag_list.present?
+    //  %dt
+    //    .tags= tags_for_index(product)
+
+    = hook(:product_bottom, self, :product => product)

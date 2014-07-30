@@ -363,6 +363,18 @@ opportunity_stage_color:
   :won          : Lime
   :lost         : OrangeRed
 
+# product Stage.
+#------------------------------------------------------------------------------
+product_default_stage: :active
+product_stage:
+  - :active
+  - :deactivated
+
+product_stage_color:
+  :active       : Lime
+  :deactivated  : OrangeRed
+
+
 # Task Category, Due Date, and Completed Date.
 #------------------------------------------------------------------------------
 task_category:

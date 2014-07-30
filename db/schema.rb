@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207033244) do
+ActiveRecord::Schema.define(version: 20140729231562) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -334,6 +334,42 @@ ActiveRecord::Schema.define(version: 20131207033244) do
   end
 
   add_index "preferences", ["user_id", "name"], name: "index_preferences_on_user_id_and_name", using: :btree
+
+  create_table "product_assets", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "asset_id"
+    t.string   "asset_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "product_assets", ["asset_id", "asset_type"], name: "index_product_assets_on_asset_id_and_asset_type", using: :btree
+
+  create_table "products", force: true do |t|
+    t.string   "code"
+    t.text     "description"
+    t.string   "name",                limit: 64,                          default: "", null: false
+    t.string   "manufacturer",        limit: 64,                          default: "", null: false
+    t.decimal  "price",                          precision: 12, scale: 2
+    t.decimal  "price_3x",                       precision: 12, scale: 2
+    t.decimal  "price_30_days",                  precision: 12, scale: 2
+    t.decimal  "price_cash",                     precision: 12, scale: 2
+    t.decimal  "rev_icms18",                     precision: 12, scale: 2
+    t.decimal  "rev_icms12",                     precision: 12, scale: 2
+    t.integer  "stock_in"
+    t.integer  "stock_out"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+    t.text     "subscribed_users"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "stage",               limit: 32
+  end
+
+  add_index "products", ["deleted_at"], name: "index_products_on_deleted_at", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false

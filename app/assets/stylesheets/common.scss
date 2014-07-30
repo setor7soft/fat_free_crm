@@ -456,6 +456,16 @@ $sidebar_width: 210px;
 
 // Sidebar, filters, and selectors.
 //------------------------------------------------------------------------------
+.caption {
+  border-bottom: 1px grey solid;
+  color: navy;
+  font: {
+    size: 12px;
+    weight: bold; };
+  margin: 4px 0px 5px 0px;
+  padding: 2px 0px 2px 0px;
+}
+
 .filters, .panel {
   background: snow;
   margin: 0px 0px 12px 0px;

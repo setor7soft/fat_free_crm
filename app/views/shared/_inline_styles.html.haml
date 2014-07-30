@@ -17,6 +17,10 @@
     - Setting.opportunity_stage_color.each do |key, value|
       li.opportunity .#{key} { background:#{value}; }
 
+  - if models.include?(:product)
+    - Setting.product_stage_color.each do |key, value|
+      #{'.' + key} { background:#{value}; }
+
   - if models.include?(:task)
     - Setting.task_category_color.each do |key, value|
       li.task .#{key} { background:#{value}; }
@@ -28,4 +32,3 @@
     li.user .signed_up { background: lightsalmon; }
 
   = hook(:inline_styles, self, local_assigns)
-

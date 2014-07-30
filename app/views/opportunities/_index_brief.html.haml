@@ -25,5 +25,9 @@
         = t(:added_by, :time_ago => timeago(opportunity.created_at), :user => h(user_name)).html_safe
       - else
         = t(:added_ago, :value => timeago(opportunity.created_at)).html_safe
+    %dt
+      .products
+        %b= t(:products) + ": "
+        = products_for_index(opportunity)
 
     = hook(:opportunity_bottom, self, :opportunity => opportunity)

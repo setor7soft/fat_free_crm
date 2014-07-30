@@ -26,4 +26,9 @@
 
       = render :partial => "/shared/tags", :locals => {:f => f, :span => 5}
 
+      %tr
+        %td{ :valign => :top, :colspan => span }
+          .label= t(:select_products)
+          = get_products_colletion_select
+
       = hook(:campaign_top_section_bottom, self, :f => f)

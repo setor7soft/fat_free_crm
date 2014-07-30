@@ -35,6 +35,9 @@ class Opportunity < ActiveRecord::Base
   has_many    :contacts, -> { order("contacts.id DESC").distinct }, :through => :contact_opportunities
   has_many    :tasks, :as => :asset, :dependent => :destroy#, :order => 'created_at DESC'
   has_many    :emails, :as => :mediator
+  has_many :product_assets, :dependent => :destroy, :as => :asset
+  has_many :products, :through => :product_assets
+
 
   serialize :subscribed_users, Set
 
