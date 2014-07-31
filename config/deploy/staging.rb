@@ -1,1 +1,1 @@
-set :deploy_to, '/home/root/rails_apps/setor7_crm_staging'
+set :deploy_to, '/home/setor7/rails_apps/setor7_crm_staging'

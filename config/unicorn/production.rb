@@ -9,14 +9,15 @@
 #if RAILS_ENV == "production"
   # Help ensure your application will always spawn in the symlinked
   # "current" directory that Capistrano sets up.
-  working_directory '/home/root/rails_apps/setor7_crm_staging/current'
+  working_directory '/home/setor7/rails_apps/setor7_crm_staging/current'
   worker_processes 2
-  user "root"
-  pid "/home/unicorn/pids/unicorn.pid"
+  #user "setor7"
+  #pid "/home/unicorn/pids/unicorn.pid"
+  pid "/home/setor7/rails_apps/setor7_crm_staging/current/unicorn/pids/unicorn.pid"
 
   # feel free to point this anywhere accessible on the filesystem
-  shared_path = '/home/root/rails_apps/setor7_crm_staging/current'
+  shared_path = '/home/setor7/rails_apps/setor7_crm_staging/current'
 
-  stderr_path '/home/root/rails_apps/setor7_crm_staging/current/log/unicorn.stderr.log'
-  stdout_path '/home/root/rails_apps/setor7_crm_staging/current/log/unicorn.stdout.log'
+  stderr_path '/home/setor7/rails_apps/setor7_crm_staging/current/log/unicorn.stderr.log'
+  stdout_path '/home/setor7/rails_apps/setor7_crm_staging/current/log/unicorn.stdout.log'
 #end
