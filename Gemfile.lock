@@ -434,3 +434,4 @@ DEPENDENCIES
   unicorn
   will_paginate (~> 3.0.2)
   zeus
+  

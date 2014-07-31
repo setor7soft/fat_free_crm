@@ -20,6 +20,7 @@ Gemfile.ci.lock
 
 public/avatars/**/*
 public/assets
+public/system/**/*
 
 tmp
 Design
@@ -34,5 +35,8 @@ Design
 *.swp
 *.gem
 .vagrant/machines/default/virtualbox/id
-.vagrant/machines/default/virtualbox/id
+
+Gemfile.lock
+
+
 Gemfile.lock
