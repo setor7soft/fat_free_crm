@@ -18,6 +18,6 @@
   # feel free to point this anywhere accessible on the filesystem
   shared_path = '/home/setor7/rails_apps/setor7_crm_staging/current'
 
-  stderr_path '/home/setor7/rails_apps/setor7_crm_staging/current/log/unicorn.stderr.log'
-  stdout_path '/home/setor7/rails_apps/setor7_crm_staging/current/log/unicorn.stdout.log'
+  stderr_path '/home/unicorn/log/unicorn.stderr.log'
+  stdout_path '/home/unicorn/log/unicorn.stdout.log'
 #end
