@@ -14,7 +14,7 @@ class Ability
     can(:create, User) if User.can_signup?
 
     if user.present?
-      entities = [Account, Campaign, Contact, Lead, Opportunity]
+      entities = [Account, Campaign, Contact, Lead, Opportunity, Product]
 
       # User
       can :manage, User, id: user.id # can do any action on themselves
