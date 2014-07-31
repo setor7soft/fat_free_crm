@@ -36,7 +36,7 @@ group :development do
   unless ENV["CI"]
     gem 'thin'
     gem 'quiet_assets'
-    gem 'capistrano', '~> 2'
+    gem 'capistrano', '~> 2.15'
     gem 'capistrano_colors'
     gem 'guard'
     gem 'guard-rspec'
@@ -99,3 +99,5 @@ group :development do
 end
 
 gem 'remotipart', '~> 1.2'
+#gem 'datashift'
+gem 'datashift', github: 'digitalm/datashift', branch: 'init4cRubyProto'

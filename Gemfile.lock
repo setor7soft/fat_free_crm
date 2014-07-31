@@ -20,6 +20,15 @@ GIT
       rails (>= 3.0)
 
 GIT
+  remote: git://github.com/digitalm/datashift.git
+  revision: 5cf205267f642bec774338de91cd5e2126339cc3
+  branch: init4cRubyProto
+  specs:
+    datashift (0.14.0)
+      rubyzip
+      spreadsheet
+
+GIT
   remote: git://github.com/rails/prototype-rails.git
   revision: bc8041559a11c16ef25228b019250b3cc122e115
   specs:
@@ -284,6 +293,7 @@ GEM
       rspec-core (~> 2.99.0)
       rspec-expectations (~> 2.99.0)
       rspec-mocks (~> 2.99.0)
+    ruby-ole (1.2.11.7)
     rubyzip (1.1.6)
     sass (3.3.11)
     sass-rails (4.0.1)
@@ -309,6 +319,8 @@ GEM
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
     slop (3.6.0)
+    spreadsheet (0.9.7)
+      ruby-ole (>= 1.0)
     sprockets (2.12.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -366,13 +378,14 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   cancan
-  capistrano (~> 2)
+  capistrano (~> 2.15)
   capistrano_colors
   capybara
   cocaine
   coffee-rails
   coveralls
   database_cleaner
+  datashift!
   dynamic_form
   email_reply_parser_ffcrm
   execjs

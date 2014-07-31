@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
   has_many    :product_assets, :dependent => :destroy
   has_many    :emails, :as => :mediator
 
-  has_attached_file :avatar, :styles => {:xmedium => "300x300>", :thumb2 => "100x100>", :medium => "50x50>", :thumb => "30x30>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => {:xmedium => "450x450>", :thumb2 => "200x220>", :medium => "60x60>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   acts_as_paranoid
@@ -29,7 +29,7 @@ class Product < ActiveRecord::Base
   }
 
 
-  validates :stage, :inclusion => { :in => Proc.new { Setting.unroll(:product_stage).map{|s| s.last.to_s } } }
+  #validates :stage, :inclusion => { :in => Proc.new { Setting.unroll(:product_stage).map{|s| s.last.to_s } } }
 
   def self.default_stage; Setting[:product_default_stage].try(:to_s) || 'active'; end
 
