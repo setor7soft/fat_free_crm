@@ -12,8 +12,8 @@
   working_directory '/home/setor7/rails_apps/setor7_crm_staging/current'
   worker_processes 2
   #user "setor7"
-  #pid "/home/unicorn/pids/unicorn.pid"
-  pid "/home/setor7/rails_apps/setor7_crm_staging/current/unicorn/pids/unicorn.pid"
+  pid "/home/unicorn/pids/unicorn.pid"
+  #pid "/home/setor7/rails_apps/setor7_crm_staging/current/unicorn/pids/unicorn.pid"
 
   # feel free to point this anywhere accessible on the filesystem
   shared_path = '/home/setor7/rails_apps/setor7_crm_staging/current'
