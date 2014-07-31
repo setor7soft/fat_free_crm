@@ -19,8 +19,4 @@
 
   stderr_path '/home/root/rails_apps/setor7_crm_staging/current/log/unicorn.stderr.log'
   stdout_path '/home/root/rails_apps/setor7_crm_staging/current/log/unicorn.stdout.log'
-  if gid && Process.egid != gid
-    Process.initgroups(user, gid)
-    Process::GID.change_privilege(gid)
-  end
 #end
