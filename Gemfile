@@ -96,6 +96,8 @@ group :development do
   gem "better_errors"
   gem 'meta_request'
   gem 'binding_of_caller'
+  gem 'capistrano-unicorn', :require => false
+  gem 'rvm-capistrano'
 end
 
 gem 'remotipart', '~> 1.2'
