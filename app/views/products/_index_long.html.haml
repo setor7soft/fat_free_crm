@@ -22,7 +22,7 @@
     = link_to_if can?(:read, product), product.code(), product
     %tt
       = brief_product_info(product)
-      %b= product.description
+      %b= truncate(product.description, length: 30)
 
     %dt{ :style => "padding: 2px 0px 0px 0px" }
     = t(:added_ago, value: timeago(product.created_at)).html_safe
