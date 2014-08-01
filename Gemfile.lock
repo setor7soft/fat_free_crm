@@ -98,6 +98,8 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    capistrano-unicorn (0.2.0)
+      capistrano (< 3.0)
     capistrano_colors (0.5.5)
     capybara (2.4.1)
       mime-types (>= 1.16)
@@ -185,7 +187,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    meta_request (0.3.3)
+    meta_request (0.3.4)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
       railties (>= 3.0.0, < 5.0.0)
@@ -295,7 +297,9 @@ GEM
       rspec-mocks (~> 2.99.0)
     ruby-ole (1.2.11.7)
     rubyzip (1.1.6)
-    sass (3.3.11)
+    rvm-capistrano (1.5.3)
+      capistrano (~> 2.15.4)
+    sass (3.3.13)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
@@ -379,6 +383,7 @@ DEPENDENCIES
   binding_of_caller
   cancan
   capistrano (~> 2.15)
+  capistrano-unicorn
   capistrano_colors
   capybara
   cocaine
@@ -420,6 +425,7 @@ DEPENDENCIES
   remotipart (~> 1.2)
   responds_to_parent (>= 1.1.0)
   rspec-rails (~> 2)
+  rvm-capistrano
   sass
   sass-rails
   scrypt (= 1.2.1)
@@ -434,4 +440,3 @@ DEPENDENCIES
   unicorn
   will_paginate (~> 3.0.2)
   zeus
-  
