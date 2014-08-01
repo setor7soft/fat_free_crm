@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 Product.create!([
   {code: "ADP-02", description: "Adaptador de base nivelante para GPS, ", name: "ADAPTADOR BASE NIV.GPS", manufacturer: "AVR", price: "259.0", price_3x: "86.0", price_30_days: "249.0", price_cash: "249.0", rev_icms18: "229.0", rev_icms12: "219.0", stock_in: 0, stock_out: 0, deleted_at: nil, subscribed_users: #<Set: {}>, avatar_file_name: nil, avatar_content_type: nil, avatar_file_size: nil, avatar_updated_at: nil, stage: "active", assigned_to: nil, user_id: nil, access: 0},
   {code: "67901-09-SPN", description: "ADAPTADOR CA P/CARREGADOR NIVO (FONTE)", name: "ADAPTADOR CA P/CARREGADOR NIVO", manufacturer: "EQUIP. NIKON", price: "369.0", price_3x: "123.0", price_30_days: nil, price_cash: "359.0", rev_icms18: nil, rev_icms12: nil, stock_in: 0, stock_out: 0, deleted_at: nil, subscribed_users: #<Set: {}>, avatar_file_name: nil, avatar_content_type: nil, avatar_file_size: nil, avatar_updated_at: nil, stage: "active", assigned_to: nil, user_id: nil, access: 0},
