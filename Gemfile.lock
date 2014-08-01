@@ -307,6 +307,9 @@ GEM
     scrypt (1.2.1)
       ffi-compiler (>= 0.0.2)
       rake
+    seed_dump (3.2.0)
+      activerecord (~> 4)
+      activesupport (~> 4)
     select2-rails (3.5.9)
       thor (~> 0.14)
     selenium-webdriver (2.42.0)
@@ -429,6 +432,7 @@ DEPENDENCIES
   sass
   sass-rails
   scrypt (= 1.2.1)
+  seed_dump
   select2-rails
   selenium-webdriver
   simple_form (~> 3.0.1)

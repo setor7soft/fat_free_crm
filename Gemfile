@@ -103,3 +103,4 @@ end
 gem 'remotipart', '~> 1.2'
 #gem 'datashift'
 gem 'datashift', github: 'digitalm/datashift', branch: 'init4cRubyProto'
+gem 'seed_dump'
