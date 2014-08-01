@@ -13,6 +13,9 @@ class Product < ActiveRecord::Base
 
   scope :my, -> { accessible_by(User.current_ability) }
 
+  scope :created_by,  ->(user) { where(:user_id => user.id) }
+  scope :assigned_to, ->(user) { where(:assigned_to => user.id) }
+
   scope :state, ->(filters) {
     where('stage IN (?)' + (filters.delete('other') ? ' OR stage IS NULL' : ''), filters)
   }

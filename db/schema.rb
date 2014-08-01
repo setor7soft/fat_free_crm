@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729231562) do
+ActiveRecord::Schema.define(version: 20140801071142) do
 
   create_table "account_contacts", force: true do |t|
     t.integer  "account_id"
@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 20140729231562) do
     t.string   "background_info"
     t.string   "skype",            limit: 128
     t.text     "subscribed_users"
+    t.integer  "old_id"
   end
 
   add_index "contacts", ["assigned_to"], name: "index_contacts_on_assigned_to"
@@ -364,9 +365,14 @@ ActiveRecord::Schema.define(version: 20140729231562) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "stage",               limit: 32
+    t.integer  "assigned_to"
+    t.integer  "user_id"
+    t.integer  "access",              limit: 8,                           default: 0
   end
 
+  add_index "products", ["assigned_to"], name: "index_products_on_assigned_to"
   add_index "products", ["deleted_at"], name: "index_products_on_deleted_at"
+  add_index "products", ["user_id"], name: "index_products_on_user_id"
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
