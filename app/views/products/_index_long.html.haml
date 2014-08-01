@@ -4,7 +4,7 @@
   - else
     .strip.white #{t :other}
 
-  = image_tag product.avatar.url(:thumb), {:class => 'gravatar'};
+  = image_tag product.avatar.url(:medium), {:class => 'gravatar'};
 
   %ul.tools
     = hook(:product_tools_before, self, :product => product)
@@ -22,7 +22,7 @@
     = link_to_if can?(:read, product), product.code(), product
     %tt
       = brief_product_info(product)
-      %b= truncate(product.description, length: 30)
+      %b= truncate(product.description, length: 300)
 
     %dt{ :style => "padding: 2px 0px 0px 0px" }
     = t(:added_ago, value: timeago(product.created_at)).html_safe
