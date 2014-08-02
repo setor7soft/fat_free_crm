@@ -25,7 +25,7 @@ if defined?(FatFreeCRM::Application)
     config.assets.compile = false
 
     # Generate digests for assets URLs
-    config.assets.digest = false
+    config.assets.digest = true
 
     # Defaults to Rails.root.join("public/assets")
     # config.assets.manifest = YOUR_PATH
