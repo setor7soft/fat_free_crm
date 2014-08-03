@@ -2,7 +2,13 @@ class Product < ActiveRecord::Base
   has_many    :product_assets, :dependent => :destroy
   has_many    :emails, :as => :mediator
 
-  has_attached_file :avatar, :styles => {:xmedium => "450x450>", :thumb2 => "200x220>", :medium => "60x60>" }, :default_url => ActionController::Base.helpers.asset_path("/:style/missing.png")
+  has_attached_file :avatar,
+                    :url => "/system/products/:style/:id/:basename.:extension",
+                    :styles => {:xmedium => "450x450>", :thumb2 => "200x220>", :medium => "60x60>" },
+                    #:default_url => ActionController::Base.helpers.asset_path('missing_:style.png')
+                    :default_url => ':default_image_url'
+
+
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   acts_as_paranoid
